@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 include AdventOfCode
 
 RSpec.describe Day3 do
@@ -24,7 +24,7 @@ RSpec.describe Day3 do
     end
 
     it 'can solve the part 1 challenge' do
-      expect(Day3.steps(361527)).to eq(326)
+      expect(Day3.steps(361_527)).to eq(326)
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe Day3 do
     end
 
     it 'can solve the part 2 challenge' do
-      expect(Day3.square_sum(361527)).to eq(363010)
+      expect(Day3.square_sum(361_527)).to eq(363_010)
     end
   end
 end

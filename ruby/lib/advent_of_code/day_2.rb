@@ -12,14 +12,15 @@ module AdventOfCode
         high_to_low = row.sort.reverse
 
         high_to_low.combination(2)
-          .to_a
-          .select { |a,b| a % b == 0 }
-          .map { |a,b| a / b }
-          .first
+                   .to_a
+                   .select { |a, b| a % b == 0 }
+                   .map { |a, b| a / b }
+                   .first
       end
     end
 
-    private
+    private_class_method
+
     def self.checksum(spreadsheet)
       spreadsheet.map { |row| yield row }.sum
     end

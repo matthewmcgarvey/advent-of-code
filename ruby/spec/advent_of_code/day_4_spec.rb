@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 include AdventOfCode
 
 RSpec.describe Day4 do
@@ -8,15 +8,15 @@ RSpec.describe Day4 do
 
   describe '.valid_passphrase?' do
     it 'returns true for `aa bb cc dd ee`' do
-      expect(Day4.valid_passphrase?("aa bb cc dd ee")).to be true
+      expect(Day4.valid_passphrase?('aa bb cc dd ee')).to be true
     end
 
     it 'returns false for `aa bb cc dd aa`' do
-      expect(Day4.valid_passphrase?("aa bb cc dd aa")).to be false
+      expect(Day4.valid_passphrase?('aa bb cc dd aa')).to be false
     end
 
     it 'returns true for `aa bb cc dd aaa`' do
-      expect(Day4.valid_passphrase?("aa bb cc dd aaa")).to be true
+      expect(Day4.valid_passphrase?('aa bb cc dd aaa')).to be true
     end
 
     it 'can solve can solve the part 1 problem' do
@@ -26,11 +26,11 @@ RSpec.describe Day4 do
 
   describe '.valid_non_anagram?' do
     it 'returns true for `abcde fghij`' do
-      expect(Day4.valid_non_anagram?("abcde fghij")).to be true
+      expect(Day4.valid_non_anagram?('abcde fghij')).to be true
     end
 
     it 'returns false for `abcde xyz ecdab`' do
-      expect(Day4.valid_non_anagram?("abcde xyz ecdab")).to be false
+      expect(Day4.valid_non_anagram?('abcde xyz ecdab')).to be false
     end
 
     it 'can solve can solve the part 2 problem' do
