@@ -83,8 +83,7 @@ function dupFrequency(changes) {
   var currentState = 0;
   let states = new Set([currentState]);
   while (true) {
-    for (var i = 0; i < changes.length; i++) {
-      var change = changes[i];
+    for (var change of changes) {
       currentState = frequencyChange(currentState, change);
       if (states.has(currentState)) {
         return currentState;
