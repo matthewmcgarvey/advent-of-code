@@ -201,5 +201,5 @@ input = [
   1868,
 ]
 
-pair = input.permutations(2).find { |pair| pair.sum == 2020 }.not_nil!
-puts pair[0] * pair[1]
+pair = input.permutations(3).find { |pair| pair.sum == 2020 }.not_nil!
+puts pair.reduce { |a, b| a * b }
