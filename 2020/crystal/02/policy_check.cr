@@ -2,21 +2,20 @@ class PasswordPolicy
   def self.parse(policy_str)
     temp = policy_str.split(" ")
     range = temp[0]
-    character = temp[1]
+    character = temp[1].chars[0]
     temp2 = range.split("-")
-    new(min: temp2[0].to_i, max: temp2[1].to_i, character: character)
+    new(pos1: temp2[0].to_i, pos2: temp2[1].to_i, character: character)
   end
 
-  private getter min : Int32
-  private getter max : Int32
-  private getter character : String
+  private getter pos1 : Int32
+  private getter pos2 : Int32
+  private getter character : Char
 
-  def initialize(@min, @max, @character)
+  def initialize(@pos1, @pos2, @character)
   end
 
   def valid?(password)
-    occurrence_count = password.count(character)
-    occurrence_count >= min && occurrence_count <= max
+    (password[pos1] == character) ^ (password[pos2] == character)
   end
 end
 
