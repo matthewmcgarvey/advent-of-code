@@ -44,7 +44,7 @@ world = World.new(content.lines)
 tree_count = 0
 
 loop do
-  world.move(move_x: 3, move_y: 1)
+  world.move(move_x: 1, move_y: 2)
   tree_count += 1 if world.tree?
 
   break if world.bottom?
