@@ -5,11 +5,11 @@
   [arr &opt step]
   (default step 1)
   (filter truthy?
-    (map-indexed
-      (fn [i v]
-        (if-let [v2 (get arr (+ i step))]
-          [v v2]))
-    arr)))
+          (map-indexed
+            (fn [i v]
+              (if-let [v2 (get arr (+ i step))]
+                [v v2]))
+            arr)))
 
 # like sum... but difference
 (defn difference
