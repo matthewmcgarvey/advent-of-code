@@ -1,7 +1,7 @@
 import scala.collection.mutable.ListBuffer
 
 object Day01 {
-  def doThing = {
+  def solve = {
     val temp = Util.readResource("Day01/input.txt")
     val arrs = ListBuffer(ListBuffer.empty[Int])
     temp.foreach(item => {

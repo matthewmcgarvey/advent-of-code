@@ -1,2 +1,2 @@
 @main def hello: Unit = 
-  Day01.doThing
+  Day02.solve
