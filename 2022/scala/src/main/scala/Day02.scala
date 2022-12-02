@@ -2,22 +2,21 @@ import scala.collection.mutable.ListBuffer
 
 object Day02 {
   def solve = {
-    val input = Util.readResource("Day02/input.txt")
+    val input = Util.readResource("Day02/example.txt")
+    println(part1(input))
     println(part2(input))
   }
 
   def part1(input : Seq[String]) : Int = {
-    input.map(line => (line.charAt(0), line.charAt(2)))
-      .map(game => (toPoint(game._1.toInt), toPoint(game._2.toInt - 23)))
+    input.map(line => (line.charAt(0) - 'A', line.charAt(2) - 'X'))
+      .map(game => (game._1 + 1, game._1 + 1))
       .map(game => (play(game) + game._2))
       .sum
   }
 
   def part2(input : Seq[String]) : Int = {
-    input.map(line => (line.charAt(0), line.charAt(2)))
-      .map(game => (game._1.toInt, game._2))
-      .map(game => (toPoint(game._1), game._2))
-      .map(game => (game._1, toMove(game)))
+    input.map(line => (line.charAt(0) - 'A', line.charAt(2) - 'X'))
+      .map(game => (game._1 + 1, toMove(game._1 + 1, game._2)))
       .map(game => (play(game) + game._2))
       .sum
   }
@@ -30,30 +29,19 @@ object Day02 {
     val left = game._1
     val right = game._2
     if (left == right)
-      return 3
-    else if ((left % 3 + 1) == right)
-      return 6
-    else
-      return 0
-  }
-
-  def toMove(game : (Int, Char)) : Int = {
-    if (game._2 == 'X')
-      return (game._1 + 1) % 3 + 1
-    else if (game._2 == 'Y')
-      return game._1
-    else
-      return game._1 % 3 + 1
-  }
-
-  def toPoint(x : Int) : Int = {
-    if (x == 65)
-      1
-    else if (x == 66)
-      2
-    else if (x == 67)
       3
+    else if ((left % 3 + 1) == right)
+      6
     else
-      -100
+      0
+  }
+
+  def toMove(left : Int, right : Int) : Int = {
+    if (right == 0)
+      (left - 1) % 3
+    else if (right == 1)
+      left
+    else
+      left % 3 + 1
   }
 }
