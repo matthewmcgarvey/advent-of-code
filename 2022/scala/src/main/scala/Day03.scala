@@ -8,24 +8,22 @@ object Day03 {
   }
 
   def part1(input : Seq[String]) : Int = {
-    val priorityLists = input.map(_.chars().toArray().map(toPriority))
-    priorityLists.map(priorityList => {
-      val left = priorityList.take(priorityList.size / 2)
-      val right = priorityList.takeRight(priorityList.size / 2)
-      left.intersect(right).last
-    }).sum
+    input.map(knapsack => knapsack.grouped(knapsack.size / 2))
+      .map(_.reduce((a, b) => a.intersect(b)).last)
+      .map(toPriority)
+      .sum
   }
 
   def part2(input : Seq[String]) : Int = {
     input.grouped(3)
       .map(_.reduce((a, b) => a.intersect(b)).last)
-      .map(char => toPriority(char.toInt))
+      .map(toPriority)
       .sum
   }
 
   // 'a' == 97
   // 'A' == 65
-  def toPriority(char : Int) : Int = {
+  def toPriority(char : Char) : Int = {
     if (char > 96)
       char - 96
     else
