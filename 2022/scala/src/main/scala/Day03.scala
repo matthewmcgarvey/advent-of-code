@@ -1,5 +1,3 @@
-import scala.collection.mutable.ListBuffer
-
 object Day03 {
   def solve = {
     val input = Util.readResource("Day03/input.txt")
