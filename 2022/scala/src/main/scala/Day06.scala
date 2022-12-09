@@ -5,7 +5,7 @@ object Day06 {
     println(part2(input))
   }
 
-  def part1(input : Seq[String]) : Int = {
+  def part1(input : List[String]) : Int = {
     val buffer = input.head
     var idx = 3
     buffer.sliding(4).find(temp => {
@@ -15,7 +15,7 @@ object Day06 {
     idx
   }
 
-  def part2(input : Seq[String]) : Int = {
+  def part2(input : List[String]) : Int = {
     val buffer = input.head
     var idx = 13
     buffer.sliding(14).find(temp => {

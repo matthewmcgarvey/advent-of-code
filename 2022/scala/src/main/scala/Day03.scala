@@ -5,14 +5,14 @@ object Day03 {
     println(part2(input))
   }
 
-  def part1(input : Seq[String]) : Int = {
+  def part1(input : List[String]) : Int = {
     input.map(knapsack => knapsack.grouped(knapsack.size / 2))
       .map(_.reduce((a, b) => a.intersect(b)).last)
       .map(toPriority)
       .sum
   }
 
-  def part2(input : Seq[String]) : Int = {
+  def part2(input : List[String]) : Int = {
     input.grouped(3)
       .map(_.reduce((a, b) => a.intersect(b)).last)
       .map(toPriority)

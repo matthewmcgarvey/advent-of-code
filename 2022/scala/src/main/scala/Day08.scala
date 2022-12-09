@@ -2,7 +2,7 @@ type Trees = List[List[Int]]
 
 object Day08 {
   def solve = {
-    val input = Util.readResource("Day08/input.txt").toList
+    val input = Util.readResource("Day08/input.txt")
     println(part1(input))
     println(part2(input))
   }

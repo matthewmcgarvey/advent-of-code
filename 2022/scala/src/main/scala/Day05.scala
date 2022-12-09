@@ -5,7 +5,7 @@ object Day05 {
     println(part2(input))
   }
 
-  def part1(input : Seq[String]) : String = {
+  def part1(input : List[String]) : String = {
     val splitIdx = input.indexOf("")
     val state = parseState(input.take(splitIdx))
     val commands = parseCommands(input.drop(splitIdx + 1))
@@ -19,7 +19,7 @@ object Day05 {
     temp.flatten(_.headOption).mkString
   }
 
-  def part2(input : Seq[String]) : String = {
+  def part2(input : List[String]) : String = {
     val splitIdx = input.indexOf("")
     val state = parseState(input.take(splitIdx))
     val commands = parseCommands(input.drop(splitIdx + 1))
@@ -33,18 +33,16 @@ object Day05 {
     temp.flatten(_.headOption).mkString
   }
 
-  def parseState(input : Seq[String]) : List[List[Char]] = {
+  def parseState(input : List[String]) : List[List[Char]] = {
     input
       .transpose
       .filter(_.last.isDigit)
       .map(_.filterNot(_.isWhitespace).dropRight(1).toList)
-      .toList
   }
 
-  def parseCommands(input : Seq[String]) : List[(Int, Int, Int)] = {
+  def parseCommands(input : List[String]) : List[(Int, Int, Int)] = {
     val regex = "move (\\d+) from (\\d+) to (\\d+)".r
-    input.toList
-      .flatten(line => regex.findFirstMatchIn(line))
+    input.flatten(line => regex.findFirstMatchIn(line))
       .map(matches => (matches.group(1).toInt, matches.group(2).toInt - 1, matches.group(3).toInt - 1))
   }
 

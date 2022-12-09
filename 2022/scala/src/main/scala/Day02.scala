@@ -5,14 +5,14 @@ object Day02 {
     println(part2(input))
   }
 
-  def part1(input : Seq[String]) : Int = {
+  def part1(input : List[String]) : Int = {
     input.map(line => (line.charAt(0) - 'A', line.charAt(2) - 'X'))
       .map(game => (game._1 + 1, game._1 + 1))
       .map(game => (play(game) + game._2))
       .sum
   }
 
-  def part2(input : Seq[String]) : Int = {
+  def part2(input : List[String]) : Int = {
     input.map(line => (line.charAt(0) - 'A', line.charAt(2) - 'X'))
       .map(game => (game._1 + 1, toMove(game._1 + 1, game._2)))
       .map(game => (play(game) + game._2))

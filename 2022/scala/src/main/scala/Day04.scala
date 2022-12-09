@@ -6,13 +6,13 @@ object Day04 {
     println(part2(input))
   }
 
-  def part1(input : Seq[String]) : Int = {
+  def part1(input : List[String]) : Int = {
     input.map(_.split(",").map(toRange))
       .filter(pair => completeOverlap(pair(0), pair(1)))
       .size
   }
 
-  def part2(input : Seq[String]) : Int = {
+  def part2(input : List[String]) : Int = {
     input.map(_.split(",").map(toRange))
       .filter(pair => anyOverlap(pair(0), pair(1)))
       .size

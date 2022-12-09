@@ -25,7 +25,7 @@ case class FileNode(name : String, size : Int) extends Node
 
 object Day07 {
   def solve = {
-    val input = Util.readResource("Day07/input.txt").toList
+    val input = Util.readResource("Day07/input.txt")
     println(part1(input))
     println(part2(input))
   }
