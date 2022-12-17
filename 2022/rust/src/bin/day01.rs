@@ -1,7 +1,7 @@
-use std::{fs::File, io::Read};
+use std::fs::read_to_string;
 
 fn main() {
-  let input = get_input();
+  let input = read_to_string("src/inputs/01.txt").unwrap();
   part1(&input);
   part2(&input);
 }
@@ -25,28 +25,17 @@ fn part1(input: &String) -> () {
 }
 
 fn part2(input: &String) -> () {
-  let mut counts: Vec<u32> = Vec::new();
-  let mut current = 0;
+  let mut counts: Vec<u32> = vec![0];
   for line in input.lines() {
     if line.is_empty() {
-      counts.push(current);
-      current = 0;
+      counts.push(0);
       continue;
     }
 
-    let calorie: u32 = line.parse().unwrap();
-    current += calorie;
+    let current = counts.last_mut().unwrap();
+    *current += line.parse::<u32>().unwrap();
   }
   counts.sort();
   let total : u32 = counts.iter().rev().take(3).sum();
-  println!("{:?}", total);
-}
-
-fn get_input() -> String {
-  let mut input = String::new();
-  File::open("src/inputs/01.txt")
-    .expect("File for this day is missing")
-    .read_to_string(&mut input)
-    .expect("File for this day was not readable");
-  return input;
+  println!("{total}");
 }
